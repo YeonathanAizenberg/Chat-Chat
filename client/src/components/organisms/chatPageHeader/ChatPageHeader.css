@@ -1,0 +1,11 @@
+.chat-header-wrapper {
+    background-color: #4c4cdf;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.chat-header-btn {
+    font-size: large;
+    margin: 1%;
+}

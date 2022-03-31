@@ -1,0 +1,10 @@
+.main-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-page-wrapper div {
+    display: flex;
+    flex-direction: column;
+}

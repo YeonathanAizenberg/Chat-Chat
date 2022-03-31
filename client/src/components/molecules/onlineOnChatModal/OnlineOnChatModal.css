@@ -1,0 +1,4 @@
+.online-users-list-wrapper {
+    height: 15vh;
+    overflow-y: scroll;
+}

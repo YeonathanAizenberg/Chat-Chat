@@ -1,0 +1,54 @@
+.chat-body-wrapper {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.sender {
+    background-color: #4c4cdf;
+    border-radius: 10px;
+    margin: 1%;
+    display: flex;
+    justify-content:  flex-end;
+    align-items: center;
+}
+
+.sender div:nth-child(1) {
+    align-items: center;
+    margin-right: 3%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.receiver {
+    background-color: #0d6efd;
+    border-radius: 10px;
+    margin: 1%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.receiver div:nth-child(1){
+    align-items: center;
+    margin-left: 3%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.person-time-wrapper {
+    min-width: 10%;
+    margin: 1%;
+}
+
+.person-message-wrapper div {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 50%;
+    text-overflow: ellipsis;
+}
