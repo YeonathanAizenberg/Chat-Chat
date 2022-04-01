@@ -32,6 +32,14 @@ const WelcomePage = ({socket, logIn }) => {
                     handleOnClick={handleLogin}
                 />
             </div>
+            <div className="main-page-img-wrapper rotate_01">
+                <img 
+                    src="logo192.png" 
+                    alt="chat-chat-logo" 
+                    width="50%" 
+                    height="100%"
+                />
+            </div>
         </div>
     );
 };

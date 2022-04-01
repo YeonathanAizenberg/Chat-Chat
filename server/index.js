@@ -3,6 +3,7 @@ const app = express();
 const http = require("http");
 const cors = require("cors");
 const {Server} = require("socket.io");
+const { userLeave, userJoin, getRoomUsers } = require("./utils/users");
 
 app.use(cors());
 
@@ -17,12 +18,16 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`)
-    // io.emit("message", "A user has join the chat : )") // Implement "alert"
 
+    
     socket.on("join_chat", (data)=> {
+        const user = userJoin(socket.id, data.user, data.room);
         socket.join(data.room)
 
-        io.emit("new_user_in_room", data.user);
+        io.to(user.room).emit('update_room_users', {
+            users: getRoomUsers(user.room)
+        })
+
         console.log(`User ${data.user} with id ${socket.id}, joined the Chat-Room with name ${data.room}`)
     })
 
@@ -31,7 +36,14 @@ io.on("connection", (socket) => {
     })
 
     socket.on("disconnect", () =>  {
-        // io.emit("message", "A user has left the chat : /") // Implement "alert"
+        const user = userLeave(socket.id)
+
+        if(user) {
+            io.to(user.room).emit('update_room_users', {
+                users: getRoomUsers(user.room)
+            })
+        }
+
         console.log(`User disconnected ${socket.id}`)
     })
 })

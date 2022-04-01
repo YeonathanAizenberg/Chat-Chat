@@ -1,4 +1,19 @@
 .online-users-list-wrapper {
     height: 15vh;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: larger;
+    font-weight: 700;
+    background-color: #4c4cdf;
+    border: 1px solid;
+}
+
+.modal-body{
+    background-color: #0d6efd;
+}
+
+.modal-new-color{
+    background-color: #4c4cdf;
 }

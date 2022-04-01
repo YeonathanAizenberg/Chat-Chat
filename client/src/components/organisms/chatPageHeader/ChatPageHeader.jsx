@@ -4,13 +4,13 @@ import OnlineOnChatModal from "../../molecules/onlineOnChatModal/OnlineOnChatMod
 import './ChatPageHeader.css';
 
 const ChatPageHeader = ({data}) => {
-
+console.log(data[0])
     const [displayOnlineModal, setDisplayOnlineModal] = useState(false)
 
     return (
         <div className="chat-header-wrapper">
             <h3>
-                {`We are ${data.length} people on the Chat right now!`}
+                {`We are ${data?.length} people on the Chat right now!`}
             </h3>
             <StandardButton
                 className={"chat-header-btn"}

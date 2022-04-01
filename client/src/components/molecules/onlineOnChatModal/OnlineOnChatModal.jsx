@@ -12,21 +12,21 @@ function OnlineOnChatModal({show, onHide, data}) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header closeButton>
+            <Modal.Header closeButton className='modal-new-color'>
                 <Modal.Title id="contained-modal-title-vcenter">
                     With you on Chat right now:
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div className='online-users-list-wrapper'>
-                    {data?.map((person) => 
-                        <div>
+                    {data?.map((person, index) => 
+                        <div key={index}>
                             {person}
                         </div>
                     )}
                 </div>
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer className='modal-new-color'>
                 <Button onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>

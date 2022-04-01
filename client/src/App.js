@@ -13,10 +13,13 @@ function App() {
   const [usersArray, setUserArray] = useState([])
 
     useEffect(() => {
-      socket.on("new_user_in_room", (data) => {
-        setUserArray((list) => 
-            [...list, data]
-        )
+      socket.on("update_room_users", (data) => {
+        let users = []
+        for (let i = 0; i < data.users.length; i++) {
+          users.push(data.users[i].username)
+        }
+
+        setUserArray(users)
     })
     }, [socket])
 
