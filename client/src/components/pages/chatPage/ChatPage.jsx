@@ -3,6 +3,7 @@ import StandardButton from "../../atoms/standardButton/StandardButton";
 import StandardInput from "../../atoms/standardInput/StandardInput";
 import ChatPageHeader from "../../organisms/chatPageHeader/ChatPageHeader";
 import ChatPageBody from "../../organisms/chatPageBody/ChatPageBody";
+import { addNewMessage } from "../../../lib/api";
 import './ChatPage.css';
 
 const ChatPage = ({ socket, usersList }) => {
@@ -23,6 +24,13 @@ const ChatPage = ({ socket, usersList }) => {
             await socket.emit("send_message", messageData)
             setMessageListList((list) => [...list, messageData])
             setChatMsg("")
+            try {
+                addNewMessage(messageData)
+            } catch (e) {
+                console.log(e)
+                alert(e)
+            }
+            
         } else {
             alert("You need a Message!")
         }

@@ -4,7 +4,7 @@ import OnlineOnChatModal from "../../molecules/onlineOnChatModal/OnlineOnChatMod
 import './ChatPageHeader.css';
 
 const ChatPageHeader = ({data}) => {
-console.log(data[0])
+
     const [displayOnlineModal, setDisplayOnlineModal] = useState(false)
 
     return (

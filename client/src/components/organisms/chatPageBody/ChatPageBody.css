@@ -22,6 +22,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex-grow: 20;
+}
+
+.base-msg div:nth-child(2) {
+    flex-grow: 1;
 }
 
 .sender {
@@ -45,6 +50,7 @@
 
 .person-time-wrapper {
     margin: 1%;
+    max-width: 10%;
 }
 
 .person-time-wrapper div:nth-child(1){
