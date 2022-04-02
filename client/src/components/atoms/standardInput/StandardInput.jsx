@@ -7,6 +7,7 @@ const StandardInput = ({ placeholder , handleOnchange, handleEnterKey, value, cl
         <input 
             className={`main-input ${className}`}
             type="text"
+            maxlength ={40}
             value={value}
             placeholder={placeholder} 
             onChange={(e)=>handleOnchange(e.target.value)}

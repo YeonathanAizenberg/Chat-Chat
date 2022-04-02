@@ -6,7 +6,7 @@ import ChatPageBody from "../../organisms/chatPageBody/ChatPageBody";
 import { addNewMessage } from "../../../lib/api";
 import './ChatPage.css';
 
-const ChatPage = ({ socket, usersList }) => {
+const ChatPage = ({ socket, usersList, userName }) => {
 
     const [chatMsg, setChatMsg] = useState("")
     const [messageList, setMessageListList] = useState([])
@@ -16,7 +16,7 @@ const ChatPage = ({ socket, usersList }) => {
         if (chatMsg !== "") {
             const messageData = {
                 room: "default",
-                user: localStorage.getItem("currentUser"),
+                user: userName,
                 message: chatMsg,
                 time: getTime.getHours() + ":" + getTime.getMinutes(),
             }
@@ -51,16 +51,20 @@ const ChatPage = ({ socket, usersList }) => {
             />
             <ChatPageBody
                 data={messageList}
+                userName={userName}
             />
             <div className="chat-footer">
                 <div className="chat-input-wrapper">
-                    <StandardInput
+                    <textarea
                         className={"chat-input"}
                         value={chatMsg}
                         placeholder={"Write in here..."}
-                        handleOnchange={setChatMsg}
-                        handleEnterKey={handleMessage}
-                    />
+                        onChange={(e)=>setChatMsg(e.target.value)}
+                        onKeyPress={(e) => {
+                            e.key === "Enter" && handleMessage()
+                        }}
+                        >
+                    </textarea>
                 </div>
 
                 <div className="chat-btn-wrapper">

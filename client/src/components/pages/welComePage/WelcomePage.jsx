@@ -3,13 +3,10 @@ import StandardButton from "../../atoms/standardButton/StandardButton";
 import StandardInput from "../../atoms/standardInput/StandardInput";
 import './WelcomePage.css';
 
-const WelcomePage = ({socket, logIn }) => {
-
-    const [userName, setUserName] = useState("")
+const WelcomePage = ({setUserName, logIn, socket, userName}) => {
 
     const handleLogin = async() => {
         if(userName !== "" ) {
-            localStorage.setItem("currentUser", userName);
             await socket.emit("join_chat", {room:"default", user:userName})
             logIn(true)
         } else {
@@ -32,8 +29,9 @@ const WelcomePage = ({socket, logIn }) => {
                     handleOnClick={handleLogin}
                 />
             </div>
-            <div className="main-page-img-wrapper rotate_01">
+            <div className="main-page-img-wrapper">
                 <img 
+                    className="rotate_01"
                     src="logo192.png" 
                     alt="chat-chat-logo" 
                     width="50%" 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { getMessages } from "../../../lib/api";
 import './ChatPageBody.css';
 
-const ChatPageBody = ({ data }) => {
+const ChatPageBody = ({ data, userName }) => {
 
     const dataWithDBdata = data
     const [loadingDBData, setLoadingDBData] = useState(false)
@@ -15,7 +15,7 @@ const ChatPageBody = ({ data }) => {
     }, [data]);
 
     useEffect(() => {
-        try{
+        try {
             getMessages().then(response => {
                 for (let i = 0; i < response?.data.length; i++) {
                     dataWithDBdata.push(response.data[i])
@@ -32,30 +32,31 @@ const ChatPageBody = ({ data }) => {
     return (
         <>
             {loadingDBData ?
-            <div className="chat-body-wrapper" ref={ref}>
-                {dataWithDBdata?.map((user, index) =>
-                    <div key={index} className={localStorage.getItem("currentUser") === user.user ? "base-msg sender" : "base-msg receiver"}>
+                <div className="chat-body-wrapper" ref={ref}>
+                    {dataWithDBdata?.map((user, index) =>
+                        <div key={index} className={userName === user.user ? "base-msg sender" : "base-msg receiver"}>
 
-                        <div>
-                            {user.message}
-                        </div>
-
-                        <div className="person-time-wrapper">
                             <div>
-                                {user.user}
+                                {user.message}
                             </div>
-                            <div>
-                                {user.time}
-                            </div>
-                        </div>
 
+                            <div className="person-time-wrapper">
+                                <div>
+                                    {user.user}
+                                </div>
+                                <div>
+                                    {user.time}
+                                </div>
+                            </div>
+
+                        </div>
+                    )}
+                </div>
+                :
+                <div className="spinner-container">
+                    <div className="loading-spinner">
                     </div>
-                )}
-            </div>
-            :
-            <div>
-                Loading Data..
-            </div>
+                </div>
             }
         </>
     );

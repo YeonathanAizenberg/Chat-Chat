@@ -11,6 +11,7 @@ function App() {
 
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [usersArray, setUserArray] = useState([])
+  const [userName, setUserName] = useState("")
 
     useEffect(() => {
       socket.on("update_room_users", (data) => {
@@ -29,11 +30,14 @@ function App() {
         <ChatPage
           socket={socket}
           usersList={usersArray}
+          userName={userName}
         />
         :
         <WelComePage
-          socket={socket}
+          setUserName={setUserName}
           logIn={setUserLoggedIn}
+          socket={socket}
+          userName={userName}
         />
       }
     </div>
