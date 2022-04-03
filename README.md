@@ -9,3 +9,8 @@ DepoyedSocket = Branch with the Socket configuration to run on Heroku
 DepoyedClient = Branch with the configuration to run on Netlify
 
 All The "Depoyedbranchas" are for future reference ONLY, please ignore them
+
+
+Deployed App: 
+
+https://chat-chat-yeoni.netlify.app/
