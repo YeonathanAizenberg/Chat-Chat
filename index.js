@@ -14,7 +14,7 @@ app.use("/messages", messageRouter)
 app.listen(process.env.PORT || dbPort, ()=> {
     console.log("Server is Running on port " + dbPort)
     connection.connect((error)=> {
-        if(error) throw error;
+        // if(error) throw error;
         console.log("DataBase Created!")
     })
 })
