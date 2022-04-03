@@ -24,6 +24,7 @@
 
 .chat-input {
     width: 100%;
+    resize: none;
 }
 
 .chat-btn-wrapper {

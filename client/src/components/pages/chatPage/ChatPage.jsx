@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import StandardButton from "../../atoms/standardButton/StandardButton";
-import StandardInput from "../../atoms/standardInput/StandardInput";
 import ChatPageHeader from "../../organisms/chatPageHeader/ChatPageHeader";
 import ChatPageBody from "../../organisms/chatPageBody/ChatPageBody";
 import { addNewMessage } from "../../../lib/api";
+import { UsersDataContext } from "../../../App";
 import './ChatPage.css';
 
-const ChatPage = ({ socket, usersList, userName }) => {
+const ChatPage = () => {
+
+    const usersDataContainer = useContext(UsersDataContext)
+    const socket = usersDataContainer.socket
+    const userName = usersDataContainer.userName
 
     const [chatMsg, setChatMsg] = useState("")
     const [messageList, setMessageListList] = useState([])
@@ -46,9 +50,7 @@ const ChatPage = ({ socket, usersList, userName }) => {
 
     return (
         <div className="main-chat-wrapper">
-            <ChatPageHeader
-                data={usersList}
-            />
+            <ChatPageHeader/>
             <ChatPageBody
                 data={messageList}
                 userName={userName}

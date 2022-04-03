@@ -7,6 +7,11 @@
 
 .main-page-wrapper h1{
     text-decoration: underline;
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+    animation-duration: 1.5s;
+    animation-name: slidein;
 }
 
 .main-page-wrapper div {
@@ -28,4 +33,16 @@
 
 .rotate_01:hover {
     -webkit-transform: rotate(360deg) translateZ(0);
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
 }

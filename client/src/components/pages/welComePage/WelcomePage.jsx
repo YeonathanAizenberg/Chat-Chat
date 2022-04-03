@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { UsersDataContext } from "../../../App";
 import StandardButton from "../../atoms/standardButton/StandardButton";
 import StandardInput from "../../atoms/standardInput/StandardInput";
 import './WelcomePage.css';
 
-const WelcomePage = ({setUserName, logIn, socket, userName}) => {
+const WelcomePage = ({setUserName, logIn}) => {
+
+    const usersDataContainer = useContext(UsersDataContext)
+    const socket = usersDataContainer.socket
+    const userName = usersDataContainer.userName
 
     const handleLogin = async() => {
         if(userName !== "" ) {
@@ -16,7 +21,7 @@ const WelcomePage = ({setUserName, logIn, socket, userName}) => {
 
     return (
         <div className="main-page-wrapper">
-            <h1> Welcome to Chat-Chat </h1>
+            <h1> Chat-Chat </h1>
             <div>
                 <StandardInput
                     placeholder={"Please insert your name..." }

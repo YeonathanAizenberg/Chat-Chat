@@ -2,16 +2,24 @@ import ChatPage from './components/pages/chatPage/ChatPage';
 import WelComePage from './components/pages/welComePage/WelcomePage';
 import io from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.css';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import './App.css';
 
 const socket = io.connect("http://localhost:3001")
+
+export const UsersDataContext = createContext()
 
 function App() {
 
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [usersArray, setUserArray] = useState([])
   const [userName, setUserName] = useState("")
+
+  const usersDataContainer = {
+    userName: userName, 
+    usersList: usersArray, 
+    socket: socket
+  }
 
     useEffect(() => {
       socket.on("update_room_users", (data) => {
@@ -26,20 +34,16 @@ function App() {
 
   return (
     <div className="App">
-      {userLoggedIn ?
-        <ChatPage
-          socket={socket}
-          usersList={usersArray}
-          userName={userName}
-        />
-        :
-        <WelComePage
-          setUserName={setUserName}
-          logIn={setUserLoggedIn}
-          socket={socket}
-          userName={userName}
-        />
-      }
+      <UsersDataContext.Provider value={usersDataContainer}>
+        {userLoggedIn ?
+          <ChatPage/>
+          :
+          <WelComePage
+            setUserName={setUserName}
+            logIn={setUserLoggedIn}
+          />
+        }
+      </UsersDataContext.Provider>
     </div>
   );
 }

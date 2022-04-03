@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-const http = require("http");
 const cors = require("cors");
 
 const connection = require('./lib/db');
 const dbPort = 5500;
 const messageRouter = require('./routes/messages')
 
+const http = require("http");
 const socketPort = 3001;
 const {Server} = require("socket.io");
 const { userLeave, userJoin, getRoomUsers } = require("./utils/users");
@@ -19,7 +19,7 @@ app.use("/messages", messageRouter)
 app.listen(dbPort, ()=> {
     console.log("Server is Running on port " + dbPort)
     connection.connect((error)=> {
-        if(error) throw error + "BlaBLa";
+        if(error) throw error;
         console.log("DataBase Created!")
     })
 })
