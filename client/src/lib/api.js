@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BaseURL = "http://localhost:5500/messages"
-// const BaseURL = "" // The deployed DB
+// const BaseURL = "http://localhost:5500/messages"
+const BaseURL = "https://chatchatserver.herokuapp.com/messages"
 
 export async function addNewMessage(messageData) { 
     const {room, user, message, time} = messageData
@@ -10,6 +10,6 @@ export async function addNewMessage(messageData) {
 }
 
 export async function getMessages() { 
-    const response = await axios.get(`${BaseURL}/`);
+    const response = await axios.get(`${BaseURL}`);
     return response;
 }

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { createContext, useEffect, useState } from 'react';
 import './App.css';
 
-const socket = io.connect("http://localhost:3001")
+const socket = io.connect("https://chatchatsocket.herokuapp.com")
 
 export const UsersDataContext = createContext()
 
