@@ -45,7 +45,7 @@ const ChatPageBody = ({ data, userName }) => {
                                     {user.user}
                                 </div>
                                 <div>
-                                    {Number(user.time.split(":")[1]) < 10 ? user.time.split(":")[0] + ":"+ "0" + user.time.split(":")[1]: user.time}
+                                    {Number(user.time.split(":")[1]) >=0 && Number(user.time.split(":")[1]) < 10 ? user.time.split(":")[0] + ":"+ "0" + user.time.split(":")[1]: user.time}
                                 </div>
                             </div>
 
